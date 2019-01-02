@@ -10,7 +10,7 @@
 		<div class="container-fluid content-row">
 			<div class="row section-one">
           		<div class="col-lg-4 d-flex align-items-stretch">
-					<div class="card">
+					<div class="card" data-section-link-number="one">
 						<img src="https://via.placeholder.com/250" class="card-img-top">
 						<div class="card-body">
 							<h5 class="card-title">test</h5>
@@ -18,7 +18,7 @@
 					</div>
 				</div>
 				<div class="col-lg-4 d-flex align-items-stretch">
-					<div class="card">
+					<div class="card" data-section-link-number="two">
 						<img src="https://via.placeholder.com/250" class="card-img-top">
 						<div class="card-body">
 							<h5 class="card-title">test</h5>
@@ -26,7 +26,7 @@
 					</div>
 				</div>
 				<div class="col-lg-4 d-flex align-items-stretch">
-					<div class="card">
+					<div class="card" data-section-link-number="three">
 						<img src="https://via.placeholder.com/250" class="card-img-top">
 						<div class="card-body">
 							<h5 class="card-title">test</h5>
@@ -35,8 +35,25 @@
 				</div>
 			</div>
 		</div>
+		<div class="linked-section linked-section-one">section 1</div>
+		<div class="linked-section linked-section-two">section 2</div>
+		<div class="linked-section linked-section-three">section 3</div>
 	</body>
 </html>
+
+<script type="text/javascript">
+	jQuery(function($){
+		$('.card').click(function(){
+			var section_link_number = $(this).data('section-link-number');
+			var section_element = $('.linked-section-'+section_link_number);
+			var scroll_value = section_element.offset().top;
+			console.log(scroll_value);
+			$('html,body').animate({
+				scrollTop: scroll_value+'px'
+			});
+		});
+	});
+</script>
 
 
 <style type="text/css">
@@ -44,6 +61,28 @@
 		margin:0;
 		width: 100vw;
 		overflow-x:hidden;
+	}
+
+	.linked-section {
+		width: 100vw;
+		height: 350px;
+
+	}
+
+	.card:hover {
+		cursor: pointer;
+	}
+
+	.linked-section-one {
+		background: lightblue;
+	}
+
+	.linked-section-two {
+		background: lightgreen;
+	}
+
+	.linked-section-three {
+		background: lightyellow;
 	}
 
 	.img-section {
