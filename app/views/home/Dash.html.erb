@@ -3,39 +3,71 @@
 		<title>Eveleth Web Developement Tutor</title>
 	</head>
 	<body>
+		<nav class="navbar navbar-dark bg-dark">
+			<a class="navbar-brand" href="#">Eveleth Tutoring</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarText">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active">
+						<a class="nav-link" href="#">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">About</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Tutor Options/Pricing</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+
 		<div class="jumbotron main">
-		  	<h1>Wev Developement Tutor</h1>
-			<%= image_tag("niceish_photo_of_me.jpg") %>
+		  	<h1>Learning Made Convenient</h1>
+			<%#= image_tag("niceish_photo_of_me.jpg") %>
 		</div>
 		<div class="container-fluid content-row">
 			<div class="row section-one">
           		<div class="col-lg-4 d-flex align-items-stretch">
 					<div class="card" data-section-link-number="one">
-						<img src="https://via.placeholder.com/250" class="card-img-top">
-						<div class="card-body">
-							<h5 class="card-title">test</h5>
+						<%= image_tag("kids_learning_on_computer.jpg", :class => "card-img-top") %>
+						<div class="card-body d-flex flex-column">
+							<h5 class="card-title">Options for All Learners</h5>
+							<p class="mt-auto">Several different level courses to choose from!</p>
 						</div>
 					</div>
 				</div>
 				<div class="col-lg-4 d-flex align-items-stretch">
 					<div class="card" data-section-link-number="two">
-						<img src="https://via.placeholder.com/250" class="card-img-top">
-						<div class="card-body">
-							<h5 class="card-title">test</h5>
+						<%= image_tag("milestone.jpg", :class => "card-img-top") %>
+						<div class="card-body d-flex flex-column">
+							<h5 class="card-title">Milestones!</h5>
+							<p class="mt-auto">Clear milestones will be outlined so parents know exactly how the student is doing.</p>
 						</div>
 					</div>
 				</div>
 				<div class="col-lg-4 d-flex align-items-stretch">
 					<div class="card" data-section-link-number="three">
-						<img src="https://via.placeholder.com/250" class="card-img-top">
-						<div class="card-body">
-							<h5 class="card-title">test</h5>
+						<%= image_tag("minecraft_stock.jpg", :class => "card-img-top") %>
+						<div class="card-body d-flex flex-column">
+							<h5 class="card-title">Game Time!</h5>
+							<p class="mt-auto">Intermittent game time to keep things interesting.</p>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="linked-section linked-section-one">section 1</div>
+		<div class="linked-section linked-section-one">
+			<div class="row">
+				<div class="col-md-5">
+					<%= image_tag("kids_learning_on_computer.jpg") %>
+				</div>
+				<div class="col-md-7">
+					Learning
+				</div>
+			</div>
+		</div>
 		<div class="linked-section linked-section-two">section 2</div>
 		<div class="linked-section linked-section-three">section 3</div>
 		<div class="filler-section"></div>
@@ -72,16 +104,17 @@
 
 	.linked-section {
 		width: 100vw;
-		height: 350px;
+		/*height: 350px;*/
+	}
 
+	.linked-section .row .col-md-7 {
+		font-size: 60px;
+		text-align: center;
+		line-height: 5;
 	}
 
 	.card:hover {
 		cursor: pointer;
-	}
-
-	.linked-section-one {
-		background: lightblue;
 	}
 
 	.linked-section-two {
