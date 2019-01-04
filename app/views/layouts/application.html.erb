@@ -30,7 +30,9 @@
 					<input class="form-control mr-sm-2" type="search" placeholder="Search Courses" aria-label="Search">
 					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 				</form>
+				<% if user_signed_in? %>
 				<%= link_to image_tag("niceish_photo_of_me.jpg", :class => "nav-user-logo"), url_for({ :controller => 'home', :action => 'account' }) %>
+				<% end %>
 			</div>
 		</nav>
     <%= yield %>
