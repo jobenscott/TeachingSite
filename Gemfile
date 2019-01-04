@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# devise
+gem 'devise'
 # mini racer gem for ubuntu 16.04 'autoprexier issue'
 gem 'mini_racer'
 # JQUERY/RAILS

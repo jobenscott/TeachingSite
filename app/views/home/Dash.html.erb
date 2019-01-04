@@ -1,9 +1,17 @@
 <html>
 	<head>
-		<title>Eveleth Web Developement Tutor</title>
+		<% if user_signed_in? %>
+			<title>Hi <%= current_user.email %></title>
+		<% else %>
+			<title>Eveleth Web Developement Tutor</title>
+		<% end %>
 	</head>
 	<body>
-		<nav class="navbar navbar-dark bg-dark">
+
+
+
+
+		<!-- <nav class="navbar navbar-dark bg-dark">
 			<a class="navbar-brand" href="#">Eveleth Tutoring</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
@@ -20,8 +28,9 @@
 						<a class="nav-link" href="#">Tutor Options/Pricing</a>
 					</li>
 				</ul>
+
 			</div>
-		</nav>
+		</nav> -->
 
 		<div class="jumbotron main">
 		  	<h1>Learning Made Convenient</h1>
@@ -61,7 +70,7 @@
 		<div class="linked-section linked-section-one">
 			<div class="row vertical-align">
 				<div class="col-md-5">
-					<%= image_tag("kids_learning_on_computer.jpg", :style => "width:100%;") %>
+					<%= image_tag("kids_learning_on_computer.jpg", :style => "width:100%;", :class => "switch") %>
 				</div>
 				<div class="col-md-7">
 					Learning
@@ -111,91 +120,17 @@
 				scrollTop: (scroll_value + 1)+'px'
 			});
 		});
+
+        var cousin;
+		$(".switch").click(function(){
+            var parent = $(this).parent(".col-md-5");
+            var uncle = $(parent).siblings(".col-md-7");
+            cousin = $(uncle).text();
+
+            $(uncle).html(this);
+            $(parent).html(cousin);
+		});
 	});
 </script>
 
 
-<style type="text/css">
-	body,html {
-		margin:0;
-		max-width: 100%;
-		overflow-x:hidden;
-		overflow-y: scroll;
-	}
-	::-webkit-scrollbar {
-		width: 0px;
-		background: transparent;
-	}
-
-	.vertical-align {
-		display: flex;
-		align-items: center;
-	}
-
-	.filler-section {
-		background: black;
-		width: 100vw;
-		/*height: 150px;*/
-	}
-
-	.linked-section {
-		width: 100vw;
-		border-top: .1px solid lightgray;
-		/*height: 350px;*/
-	}
-
-	.linked-section .row .col-md-7 {
-		font-size: 60px;
-		text-align: center;
-		/*line-height: 5;*/
-	}
-
-	.card:hover {
-		cursor: pointer;
-	}
-
-	.img-section {
-		height: 60%;
-	}
-
-	.card {
-		margin: auto !important;
-		margin-bottom: 15px !important;
-		border: none;
-		border-radius: 0
-	}
-
-	.card:first-of-type {
-		margin-top: 15px !important;
-	}
-
-	.jumbotron h1 {
-		text-align: center;
-	}
-
-	.jumbotron img {
-		margin-left: calc(50% - 100px);
-		border: solid black 1px;
-		border-radius: 1.5%;
-	}
-	
-	.jumbotron.main {
-		margin-bottom: 0 !important;
-	}
-
-	.section-one {
-		background: #6c747c;
-		/*height: 450px;*/
-		border-top: black solid 1.5px;
-	}
-/*
-	.section-one * {
-		height: 100%;
-	}
-
-	.section-one * .row * img {
-		margin-top: 10%;
-		margin-left: 25%;
-	}
-*/
-</style>
