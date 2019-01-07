@@ -12,7 +12,7 @@
 
 
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-			<a class="navbar-brand" href="#">Navbar</a>
+			<a class="navbar-brand" href="/">Navbar</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -20,15 +20,19 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item active">
-						<a class="nav-link" href="#">Home</a>
+						<a class="nav-link" href="/">Home</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="#">About</a>
 					</li>
 				</ul>
 				<form class="form-inline my-2 my-lg-0">
-					<input class="form-control mr-sm-2" type="search" placeholder="Search Courses" aria-label="Search">
-					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+					<input class="form-control mr-sm-2" type="search" id="course-search" placeholder="Search Courses" aria-label="Search">
+
+					<!-- <select id="selecter" class="selectpicker" data-live-search="true"> -->
+
+					<!-- </select> -->
+					<button class="btn btn-outline-success my-2 my-sm-0" id="submit" type="submit">Search</button>
 				</form>
 				<% if user_signed_in? %>
 				<%= link_to image_tag("niceish_photo_of_me.jpg", :class => "nav-user-logo"), url_for({ :controller => 'home', :action => 'account' }) %>
@@ -38,6 +42,54 @@
     <%= yield %>
   </body>
 </html>
+
+<script type="text/javascript">
+	jQuery(function($){
+
+		populateCourses();
+		var courses;
+
+		function populateCourses() {
+			$.ajax({
+				url: '/home/get_courses',
+				dataType: 'json',
+				success: function(data) {
+					console.log(data);
+					courses = data;	
+				}
+			});
+		}
+		$('#course-search').on("input", function(e){
+			e.preventDefault();
+			console.log(this.value);
+			// var name = $('#name').val(),
+			// 	desc = $('#desc').val(),
+			// 	difficulty = $('#difficulty').val();
+
+			// $.ajax({
+			// 	url: '/home/create_course',
+			// 	dataType: 'json',
+			// 	data: {name:name, desc:desc, difficulty:difficulty},
+			// 	success: function(data) {
+			// 		console.log(data);
+			// 	}
+			// });
+		});
+
+		$('#submit').click(function(e){
+			e.preventDefault();
+
+			var searched_course = $(this).siblings('input').val();
+
+			$(courses).each(function(){
+				if(this.name == searched_course) {
+					window.location = 'course/'+this.id;
+				}
+			});
+		});
+
+	});
+</script>
 
 
 <style type="text/css">

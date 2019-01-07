@@ -2,11 +2,9 @@ class CreateCourses < ActiveRecord::Migration[5.1]
   def change
     create_table :courses do |t|
       t.string :name
-      t.text :description
-      t.integer :length
+      t.string :description
+      t.datetime :length
       t.integer :difficulty
-      t.boolean :active
-      t.references :user, foreign_key: true
 
       t.timestamps
     end

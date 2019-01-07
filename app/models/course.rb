@@ -1,3 +1,4 @@
 class Course < ApplicationRecord
-  belongs_to :user
+	has_many :user_courses
+	has_many :users, :through => :user_course
 end

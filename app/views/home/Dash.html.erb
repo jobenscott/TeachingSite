@@ -1,10 +1,10 @@
 <html>
 	<head>
-		<% if user_signed_in? %>
-			<title>Hi <%= current_user.email %></title>
-		<% else %>
+		<%# if user_signed_in? %>
+			<title>Hi <%#= current_user.email %></title>
+		<%# else %>
 			<title>Eveleth Web Developement Tutor</title>
-		<% end %>
+		<%# end %>
 	</head>
 	<body>
 
@@ -134,3 +134,97 @@
 </script>
 
 
+<style type="text/css">
+body,html {
+	margin:0;
+	max-width: 100%;
+	overflow-x:hidden;
+	overflow-y: scroll;
+}
+::-webkit-scrollbar {
+	width: 0px;
+	background: transparent;
+}
+
+.nav-user-logo {
+	width: auto;
+	height: auto;
+	max-width: 38px;
+	margin: 0 10px;
+}
+
+.vertical-align {
+	display: flex;
+	align-items: center;
+}
+
+.filler-section {
+	background: black;
+	width: 100vw;
+	/*height: 150px;*/
+}
+
+.linked-section {
+	width: 100vw;
+	border-top: .1px solid lightgray;
+	/*height: 350px;*/
+}
+
+.linked-section .row .col-md-7 {
+	font-size: 60px;
+	text-align: center;
+	/*line-height: 5;*/
+}
+
+.card:hover {
+	cursor: pointer;
+}
+
+.img-section {
+	height: 60%;
+}
+
+.card {
+	-webkit-box-shadow: 10px 10px 34px -7px rgba(0,0,0,0.75);
+	-moz-box-shadow: 10px 10px 34px -7px rgba(0,0,0,0.75);
+	box-shadow: 10px 10px 34px -7px rgba(0,0,0,0.75);
+	margin: auto !important;
+	margin-bottom: 15px !important;
+	border: none;
+	border-radius: 0
+}
+
+.card:first-of-type {
+	margin-top: 15px !important;
+}
+
+.jumbotron h1 {
+	text-align: center;
+}
+
+.jumbotron img {
+	margin-left: calc(50% - 100px);
+	border: solid black 1px;
+	border-radius: 1.5%;
+}
+
+.jumbotron.main {
+	margin-bottom: 0 !important;
+}
+
+.section-one {
+	background: #6c747c;
+	/*height: 450px;*/
+	border-top: black solid 1.5px;
+}
+/*
+	.section-one * {
+		height: 100%;
+	}
+
+	.section-one * .row * img {
+		margin-top: 10%;
+		margin-left: 25%;
+	}
+	*/
+	</style>

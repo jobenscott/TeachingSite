@@ -10,32 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190104194346) do
+ActiveRecord::Schema.define(version: 20190107173808) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "courses", force: :cascade do |t|
     t.string "name"
-    t.text "description"
-    t.integer "length"
+    t.string "description"
+    t.datetime "length"
     t.integer "difficulty"
-    t.boolean "active"
-    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_courses_on_user_id"
   end
 
-  create_table "tasks", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.integer "length"
-    t.jsonb "data"
+  create_table "user_courses", force: :cascade do |t|
+    t.bigint "user_id"
     t.bigint "course_id"
+    t.boolean "active"
+    t.jsonb "data"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["course_id"], name: "index_tasks_on_course_id"
+    t.index ["course_id"], name: "index_user_courses_on_course_id"
+    t.index ["user_id"], name: "index_user_courses_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -55,6 +52,6 @@ ActiveRecord::Schema.define(version: 20190104194346) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "courses", "users"
-  add_foreign_key "tasks", "courses"
+  add_foreign_key "user_courses", "courses"
+  add_foreign_key "user_courses", "users"
 end
