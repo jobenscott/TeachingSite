@@ -12,34 +12,42 @@
 
 
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-			<a class="navbar-brand" href="/">Navbar</a>
+			<!-- <a class="navbar-brand" href="/">Eveleth Tutoring</a> -->
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
-					<li class="nav-item active">
+					<li class="nav-item">
 						<a class="nav-link" href="/">Home</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">About</a>
+						<a class="nav-link" href="/home/courses">Courses</a>
 					</li>
 				</ul>
-				<form class="form-inline my-2 my-lg-0">
-					<!-- <input class="form-control mr-sm-2" type="search" id="course-search" placeholder="Search Courses" aria-label="Search"> -->
+				<!-- <form class="form-inline my-2 my-lg-0">
+					<input class="form-control mr-sm-2" type="search" id="course-search" placeholder="Search Courses" aria-label="Search">
 
 					<select id="selector" class="selectpicker" data-live-search="true">
 
 					</select>
 					<button class="btn btn-outline-success my-2 my-sm-0" id="submit" type="submit">Search</button>
-				</form>
+				</form> -->
 				<% if user_signed_in? %>
-				<%= link_to image_tag("niceish_photo_of_me.jpg", :class => "nav-user-logo"), url_for({ :controller => 'home', :action => 'account' }) %>
+				<%= link_to image_tag("niceish_photo_of_me.jpg", :class => "nav-user-logo") + "My Account", url_for({ :controller => 'home', :action => 'account' }), :class => "my-account" %>
 				<% end %>
 			</div>
 		</nav>
     <%= yield %>
+    <footer style="background:black;" class="fixed-footer">
+    	<div class="row">
+    		<div class="col-md-9"></div>
+    		<div class="col-md-3 footer-site-title">
+    			Eveleth-Tutoring
+    		</div>
+    	</div>
+    </footer>
   </body>
 </html>
 
@@ -101,10 +109,34 @@ body,html {
 	max-width: 100%;
 	overflow-x:hidden;
 	overflow-y: scroll;
+	background: #e9ecef;
 }
 ::-webkit-scrollbar {
 	width: 0px;
 	background: transparent;
+}
+
+.my-account, .nav-link {
+	text-decoration: none;
+	color: white !important;
+}
+
+.collapse ul li a:hover, .collapse a:hover {
+	color:darkgrey !important;
+	text-decoration: none;
+}
+
+.fixed-footer {
+	position: absolute;
+	height: 100px;
+	width: 100%;
+}
+
+.footer-site-title {
+	color: white;
+	font-size: 25px;
+	text-align: center;
+	line-height: 4;
 }
 
 .nav-user-logo {

@@ -3,13 +3,16 @@ class HomeController < ApplicationController
   def Dash
   end
 
+  def dashboard
+
+  end
+
   def account
 
   end
 
   def courses
-
-  	
+    @courses = Course.all
   end
 
   def create_course
