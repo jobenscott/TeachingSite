@@ -2,12 +2,12 @@
 	<input placeholder="Name..." id="name">
 	<input placeholder="Description..." id="desc">
 	<input placeholder="Difficulty..." id="difficulty">
-	<button id="submit">Add Course</button>
+	<button id="add-course">Add Course</button>
 </div>
 
 <script type="text/javascript">
 	jQuery(function($){
-		$('#submit').click(function(e){
+		$('#add-course').click(function(e){
 			e.preventDefault();
 
 			var name = $('#name').val(),

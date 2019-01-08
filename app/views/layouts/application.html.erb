@@ -27,11 +27,11 @@
 					</li>
 				</ul>
 				<form class="form-inline my-2 my-lg-0">
-					<input class="form-control mr-sm-2" type="search" id="course-search" placeholder="Search Courses" aria-label="Search">
+					<!-- <input class="form-control mr-sm-2" type="search" id="course-search" placeholder="Search Courses" aria-label="Search"> -->
 
-					<!-- <select id="selecter" class="selectpicker" data-live-search="true"> -->
+					<select id="selector" class="selectpicker" data-live-search="true">
 
-					<!-- </select> -->
+					</select>
 					<button class="btn btn-outline-success my-2 my-sm-0" id="submit" type="submit">Search</button>
 				</form>
 				<% if user_signed_in? %>
@@ -56,6 +56,9 @@
 				success: function(data) {
 					console.log(data);
 					courses = data;	
+					$(courses).each(function(){
+						$('#selector').append('<option>'+this.name+'<option>');
+					});
 				}
 			});
 		}
